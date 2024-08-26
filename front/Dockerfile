@@ -18,6 +18,9 @@ RUN rm /usr/share/nginx/html/index.html
 # Copy the Angular build output to the Nginx HTML directory
 COPY --from=build /app/dist/front/browser /usr/share/nginx/html
 
+# Copy the custom Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
